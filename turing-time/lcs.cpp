@@ -38,31 +38,38 @@ signed main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int n, w, sum = 0;
-    cin >> n >> w;
-    int wgt[n + 1], val[n + 1];
-    for (int i = 0; i < n; i++)
-        cin >> wgt[i] >> val[i], sum += val[i];
-
-    int dp[105][10005] = {0};
-    for (int i = 1; i <= n; i++)
+    string s, t;
+    cin >> s >> t;
+   
+    vvi f(3005, vi(3005));
+    for (int i = 0; i <= s.length(); i++)
     {
-        for (int v = 0; v <= sum; v++)
+        for (int j = 0; j <= t.length(); j++)
         {
-            if (v - val[i - 1] >= 0)
-                dp[i][v] = min(dp[i - 1][v],
-                        dp[i - 1][v - val[i - 1]] + wgt[i]);
+            if (i == 0 || j == 0)
+                f[i][j] = 0;
+            else if (s[i - 1] == t[j - 1])
+                f[i][j] = f[i - 1][j - 1]  + 1;
+            else
+                f[i][j] = max(f[i - 1][j], f[i][j - 1]);
         }
     }
-
-    for (int v = sum; v >= 0; v--)
+    
+    string str = ""; 
+    int i = s.length(), j = t.length();
+    while(i > 0 and j > 0)
     {
-
-        if (dp[n][v] <= w)
+        if (s[i - 1] == t[j - 1])
         {
-            cout << dp[n][w] << endl;
-            break;
+            str += s[i - 1], i--, j--;
         }
+        else if (f[i - 1][j] > f[i][j - 1])
+            i--;
+        else
+            j--;
     }
+    
+    reverse(all(str));
+    cout << str << endl;
     return 0;
 }
