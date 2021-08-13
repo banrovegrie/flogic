@@ -38,24 +38,9 @@ signed main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    // input
-    int h, w;
-    cin >> h >> w;
-    vector<string> g(h + 5);
-    for (int i = 1; i <= h; i++)
-        cin >> g[i], g[i] = " " + g[i];
-
-    vvi f(h + 5, vi(w + 5, 0));
-    for (int i = 1; i <= h; i++)
-    {
-        for (int j = 1; j <= w; j++)
-        {
-            if (g[i][j] == '.')
-                f[i][j] = (f[i - 1][j] + f[i][j - 1]) % MOD;
-            f[1][1] = 1;
-        }
-    }
-
-    cout << f[h][w] % MOD << endl;
+    int t;
+    cin >> t;
+    while (t--)
+    {}
     return 0;
 }
