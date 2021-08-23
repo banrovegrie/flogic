@@ -33,6 +33,11 @@ typedef vector<bool> vb;                // Vector of bool
 #define ordered_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 //<----------------------------------------------------------------------------------------------------------------------->
 
+int f(int n)
+{
+    return (int)log2(n & (~(n - 1)));
+}
+
 signed main()
 {
     ios_base::sync_with_stdio(false);
@@ -41,6 +46,15 @@ signed main()
     int t;
     cin >> t;
     while (t--)
-    {}
+    {
+        int n;
+        cin >> n;
+
+        for (int i = 1; i <= n; i++)
+        {
+            cout << f(i) + 1 << " ";
+        }
+        cout << endl;
+    }
     return 0;
 }
