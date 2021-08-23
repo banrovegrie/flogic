@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <iomanip>
 //#include <ext/pb_ds/assoc_container.hpp>		// uncomment before submission
 //#include <ext/pb_ds/tree_policy.hpp>			// uncomment before submission
 //using namespace __gnu_pbds;					// uncomment before submission
@@ -6,7 +7,7 @@ using namespace std;
 //<---------------------------------------------------Template----------------------------------------------------------->
 #define int long long
 #define ll long long
-#define ld long double
+#define double long double
 const int INF = 1e18 + 7;
 const int MAX = 1e5 + 7;
 const int MOD = 1e9 + 7;
@@ -33,52 +34,32 @@ typedef vector<bool> vb;                // Vector of bool
 #define ordered_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 //<----------------------------------------------------------------------------------------------------------------------->
 
-int m;
-
-int power(int a, int b) 
-{
-    a %= m;
-    long long res = 1;
-    while (b > 0) 
-    {
-        if (b & 1)
-            res = res * a % m;
-        a = a * a % m;
-        b >>= 1;
-    }
-    return res;
-}
-
 signed main()
 {
-    // ios_base::sync_with_stdio(false);
-    // cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     
-    // int t;
-    // cin >> t;
-    int maxz = 0; 
-    for (m = 4; m <= 1000; m++)
+    int T;
+    cin >> T;
+    while (T--)
     {
-        bool flag = false;
-        for (int z = 3; z < m; z++)
-        {
-            for (int n = 3; n < m; n++)
-            {
-                int val = power(z, n);
-                if (val == 1)
-                    maxz = max(z, maxz),
-                    cout << z << endl,
-                    flag = true;
-                if (flag)
-                    break;
-            }
-            if (flag)
-                break;
-        }
+        double g = (double)10.00;
+        double h, t, x;
+        cin >> h >> t >> x;
+        x = x * (double)(M_PI/(double)180.00000000000000000);
 
-        if (flag == false)
-            cout <<  m << " WTF" << endl;
+        double v = sqrt((double)2.000 * g * h);
+        double v_x = v * sin(x);
+        double v_y = v * cos(x);
+
+        double S_x = v_x * t + ((double)0.5) * (g * sin(x)) * t * t;
+
+        double val = ((t / ((double)2.000 * v / g)) - floor(t / ((double)2.000 * v / g))) * ((double)2.000 * v / g);
+
+        double S_y = v_y * val - ((double)0.5) * (g * cos(x)) * val * val;
+        
+        double S = sqrt(S_x * S_x + S_y * S_y);
+        cout << setprecision(15) << S << endl;
     }
-    cout << maxz << endl;
     return 0;
 }

@@ -33,52 +33,63 @@ typedef vector<bool> vb;                // Vector of bool
 #define ordered_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 //<----------------------------------------------------------------------------------------------------------------------->
 
-int m;
-
-int power(int a, int b) 
-{
-    a %= m;
-    long long res = 1;
-    while (b > 0) 
-    {
-        if (b & 1)
-            res = res * a % m;
-        a = a * a % m;
-        b >>= 1;
-    }
-    return res;
-}
-
 signed main()
 {
-    // ios_base::sync_with_stdio(false);
-    // cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     
-    // int t;
-    // cin >> t;
-    int maxz = 0; 
-    for (m = 4; m <= 1000; m++)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        bool flag = false;
-        for (int z = 3; z < m; z++)
+        // input
+        int n;
+        cin >> n;
+        vi a(n);
+        map<int, int> m;
+        set<int> s;
+        for (int &i: a)
         {
-            for (int n = 3; n < m; n++)
-            {
-                int val = power(z, n);
-                if (val == 1)
-                    maxz = max(z, maxz),
-                    cout << z << endl,
-                    flag = true;
-                if (flag)
-                    break;
-            }
-            if (flag)
-                break;
+            cin >> i;
+            m[i]++;
+            if (i != 1 and i != 0)
+                s.insert(i);
         }
 
-        if (flag == false)
-            cout <<  m << " WTF" << endl;
+        if (n == 1)
+        {
+            cout << 1 << endl;
+            continue;
+        }
+        
+        if (s.empty())
+        {
+            cout << 1 << endl;
+            continue;
+        }
+        else if (s.size() > 1)
+        {
+            cout << 0 << endl;
+            continue;
+        }
+        else 
+        {   
+            int num = *(s.begin());
+            if (m[num] > 1 and num != -1)
+                cout << 0 << endl;
+            else if (m[num] > 1 and num == -1)
+            {   
+                if (m[1] >= 1)
+                    cout << 1 << endl;
+                else
+                    cout << 0 << endl;
+            }
+            // m[num] == 1
+            else
+            {
+                cout << 1 << endl;
+            }
+        }
     }
-    cout << maxz << endl;
     return 0;
 }

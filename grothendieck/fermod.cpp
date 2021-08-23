@@ -54,31 +54,39 @@ signed main()
     // ios_base::sync_with_stdio(false);
     // cin.tie(NULL);
     
-    // int t;
-    // cin >> t;
-    int maxz = 0; 
-    for (m = 4; m <= 1000; m++)
+    int t;
+    cin >> t;
+    while(t--)
     {
+        cin >> m;
         bool flag = false;
-        for (int z = 3; z < m; z++)
+        int x = m - 2;
         {
-            for (int n = 3; n < m; n++)
+            int y = m - 2;
             {
-                int val = power(z, n);
-                if (val == 1)
-                    maxz = max(z, maxz),
-                    cout << z << endl,
-                    flag = true;
-                if (flag)
-                    break;
+                int z = m - 4;
+                {
+                    int n = 3889;
+                    {
+                        int val1 = (power(x, n) + power(y, n)) % m;
+                        int val2 = power(z, n);
+                        if (val1 == val2)
+                            cout << x << " " << y << " " << z << " " << n << endl,
+                            flag = true;
+                        // if (flag)
+                        //     break;
+                    }
+                    // if (flag)
+                    //     break;
+                }
+                // if (flag)
+                //     break;
             }
-            if (flag)
-                break;
+            // if (flag)
+            //     break;
         }
-
         if (flag == false)
             cout <<  m << " WTF" << endl;
     }
-    cout << maxz << endl;
     return 0;
 }

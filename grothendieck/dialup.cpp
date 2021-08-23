@@ -33,52 +33,66 @@ typedef vector<bool> vb;                // Vector of bool
 #define ordered_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 //<----------------------------------------------------------------------------------------------------------------------->
 
-int m;
-
-int power(int a, int b) 
-{
-    a %= m;
-    long long res = 1;
-    while (b > 0) 
-    {
-        if (b & 1)
-            res = res * a % m;
-        a = a * a % m;
-        b >>= 1;
-    }
-    return res;
-}
-
 signed main()
 {
-    // ios_base::sync_with_stdio(false);
-    // cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     
-    // int t;
-    // cin >> t;
-    int maxz = 0; 
-    for (m = 4; m <= 1000; m++)
+    int n, m;
+    cin >> n >> m;
+    
+    // inputs
+    bool f0 = false, f1 = false;
+    bool g0 = false, g1 = false; 
+    vi s(n), t(m);
+    for (int &i: s)
     {
-        bool flag = false;
-        for (int z = 3; z < m; z++)
-        {
-            for (int n = 3; n < m; n++)
-            {
-                int val = power(z, n);
-                if (val == 1)
-                    maxz = max(z, maxz),
-                    cout << z << endl,
-                    flag = true;
-                if (flag)
-                    break;
-            }
-            if (flag)
-                break;
-        }
-
-        if (flag == false)
-            cout <<  m << " WTF" << endl;
+        cin >> i;
+        if (i == 0)
+            f0 = true;
+        else
+            f1 = true;
     }
-    cout << maxz << endl;
+    for (int &i: t)
+    {
+        cin >> i;
+        if (i == 0)
+            g0 = true;
+        else
+            g1 = true;
+    }
+    
+    // check impossibility
+    if ((g0 and !f0) or (g1 and !f1))
+    {
+        cout << -1 << endl;
+        return 0;
+    }
+
+    // find answer
+    int ans = 0, mn = INF;
+    bool flag = true;
+  
+    for (int i = 0; i < n; i++)
+    {
+        if (s[i] != s[0])
+            mn = min(mn, min(i, n - i));
+    }
+
+    for (int i = 0; i < m; i++)
+    {
+        if (t[i] == s[0])
+            ans += 1;
+        else
+        {
+            if (flag)
+                ans += mn + 1, flag = false;
+            else
+                ans += 2;
+            s[0] = t[i];
+        }
+    }
+
+    cout << ans << endl;
     return 0;
 }

@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <bits/stdc++.h>
 //#include <ext/pb_ds/assoc_container.hpp>		// uncomment before submission
 //#include <ext/pb_ds/tree_policy.hpp>			// uncomment before submission
@@ -33,52 +34,26 @@ typedef vector<bool> vb;                // Vector of bool
 #define ordered_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 //<----------------------------------------------------------------------------------------------------------------------->
 
-int m;
-
-int power(int a, int b) 
-{
-    a %= m;
-    long long res = 1;
-    while (b > 0) 
-    {
-        if (b & 1)
-            res = res * a % m;
-        a = a * a % m;
-        b >>= 1;
-    }
-    return res;
-}
-
 signed main()
 {
-    // ios_base::sync_with_stdio(false);
-    // cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     
-    // int t;
-    // cin >> t;
-    int maxz = 0; 
-    for (m = 4; m <= 1000; m++)
-    {
-        bool flag = false;
-        for (int z = 3; z < m; z++)
-        {
-            for (int n = 3; n < m; n++)
-            {
-                int val = power(z, n);
-                if (val == 1)
-                    maxz = max(z, maxz),
-                    cout << z << endl,
-                    flag = true;
-                if (flag)
-                    break;
-            }
-            if (flag)
-                break;
-        }
+    string s;
+    cin >> s;
+    int k;
+    cin >> k;
+    sort(all(s));
 
-        if (flag == false)
-            cout <<  m << " WTF" << endl;
+    do
+    {
+        k--;
+        if (k == 0)
+        {
+            cout << s << endl;
+            break;
+        }
     }
-    cout << maxz << endl;
+    while(next_permutation(all(s)));
     return 0;
 }

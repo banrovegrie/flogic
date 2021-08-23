@@ -33,52 +33,33 @@ typedef vector<bool> vb;                // Vector of bool
 #define ordered_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 //<----------------------------------------------------------------------------------------------------------------------->
 
-int m;
-
-int power(int a, int b) 
-{
-    a %= m;
-    long long res = 1;
-    while (b > 0) 
-    {
-        if (b & 1)
-            res = res * a % m;
-        a = a * a % m;
-        b >>= 1;
-    }
-    return res;
-}
-
 signed main()
 {
-    // ios_base::sync_with_stdio(false);
-    // cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     
-    // int t;
-    // cin >> t;
-    int maxz = 0; 
-    for (m = 4; m <= 1000; m++)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        bool flag = false;
-        for (int z = 3; z < m; z++)
+        // input
+        int n, k, x, sum = 0;
+        cin >> n >> k >> x;
+        vi a(n);
+        for (int &i: a)
+            cin >> i, sum += i;
+        sort(all(a));
+
+        for (int i = n - 1; i >= 1; i -= 2)
         {
-            for (int n = 3; n < m; n++)
-            {
-                int val = power(z, n);
-                if (val == 1)
-                    maxz = max(z, maxz),
-                    cout << z << endl,
-                    flag = true;
-                if (flag)
-                    break;
-            }
-            if (flag)
+            if (k <= 0)
+                break;
+            if (a[i] + a[i - 1] > x)
+                k--, sum -= (a[i] + a[i - 1] - x);
+            else
                 break;
         }
-
-        if (flag == false)
-            cout <<  m << " WTF" << endl;
+        cout << sum << endl;
     }
-    cout << maxz << endl;
     return 0;
 }
