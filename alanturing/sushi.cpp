@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <cstring>
 //#include <ext/pb_ds/assoc_container.hpp>		// uncomment before submission
 //#include <ext/pb_ds/tree_policy.hpp>			// uncomment before submission
 //using namespace __gnu_pbds;					// uncomment before submission
@@ -33,37 +34,47 @@ typedef vector<bool> vb;                // Vector of bool
 #define ordered_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 //<----------------------------------------------------------------------------------------------------------------------->
 
+int n;
+ld f[302][302][302];
+
+ld solve(int x, int y, int z)
+{
+    if (f[x][y][z] >= 0.0)
+        return f[x][y][z];
+    if (x == 0 and y == 0 and z == 0)
+        return 0.0;
+    /* if (x + y + z == 1) */
+        /* return n; */
+
+    f[x][y][z] =  0;
+
+    if (x > 0)
+        f[x][y][z] += solve(x - 1, y, z) * (ld)(x) / (ld)(x + y + z);
+    if (y > 0)
+        f[x][y][z] += solve(x + 1, y - 1, z) * (ld)(y) / (ld)(x + y + z);
+    if (z > 0)
+        f[x][y][z] += solve(x, y + 1, z - 1) * (ld)(z) / (ld)(x + y + z);
+    
+    return f[x][y][z] = f[x][y][z] + (ld)n / (ld)(x + y + z);
+}
+
 signed main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    // input
-    int n;
+    memset(f, -1.0, sizeof(f));
+    int x = 0, y = 0, z = 0;
     cin >> n;
-
-    vector<ld> p(2 * n + 5);
-    ld ans = 0.0;
-    for (int i = 0; i < n; i++)
-        cin >> p[i];
-
-    vector<vector<ld> > f(n + 5, vector<ld>(n + 5, 0.0));
-    f[0][0] = 1.0;
-    for (int i = 0; i < n; i++)
+    vi a(n);
+    for (int &i: a)
     {
-        for (int j = 0; j < n; j++)
-        {
-            f[i + 1][j] += f[i][j] * p[i + j];
-            f[i][j + 1] += f[i][j] * (1 - p[i + j]);
-        }
+        cin >> i;
+        if (i == 1) x++;
+        else if (i == 2) y++;
+        else z++;
     }
 
-    for (int i = n; i > n - i; i--)
-    {
-        ans += f[i][n - i];
-    }
-
-    // output
-    cout << setprecision(9) << ans << endl;
+    cout << setprecision(19) << solve(x, y, z) << endl;
     return 0;
 }

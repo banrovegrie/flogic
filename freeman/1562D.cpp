@@ -38,32 +38,38 @@ signed main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    // input
-    int n;
-    cin >> n;
-
-    vector<ld> p(2 * n + 5);
-    ld ans = 0.0;
-    for (int i = 0; i < n; i++)
-        cin >> p[i];
-
-    vector<vector<ld> > f(n + 5, vector<ld>(n + 5, 0.0));
-    f[0][0] = 1.0;
-    for (int i = 0; i < n; i++)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        for (int j = 0; j < n; j++)
+        int n, q;
+        cin >> n >> q;
+        string s;
+        cin >> s;
+
+        vi pos(n + 1), neg(n + 1);
+        if (s[0] == '+')
+            pos[0] = 1;
+        else
+            neg[0] = 1;
+        for (int i = 1; i < n; i++)
         {
-            f[i + 1][j] += f[i][j] * p[i + j];
-            f[i][j + 1] += f[i][j] * (1 - p[i + j]);
+            if (s[i] == '+') 
+                pos[i] = pos[i - 1] + 1,
+                neg[i] = neg[i - 1];
+            else
+                pos[i] = pos[i - 1],
+                neg[i] = neg[i - 1] + 1;
+        }
+
+        while (q--)
+        {
+            int l, r;
+            cin >> l >> r;
+            l--, r--;
+
+            if (pos[r] - pos[l] >= neg[r] - neg[l]);
         }
     }
-
-    for (int i = n; i > n - i; i--)
-    {
-        ans += f[i][n - i];
-    }
-
-    // output
-    cout << setprecision(9) << ans << endl;
     return 0;
 }

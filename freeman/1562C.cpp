@@ -38,32 +38,37 @@ signed main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    // input
-    int n;
-    cin >> n;
-
-    vector<ld> p(2 * n + 5);
-    ld ans = 0.0;
-    for (int i = 0; i < n; i++)
-        cin >> p[i];
-
-    vector<vector<ld> > f(n + 5, vector<ld>(n + 5, 0.0));
-    f[0][0] = 1.0;
-    for (int i = 0; i < n; i++)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        for (int j = 0; j < n; j++)
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
+
+        bool flag = false;
+        for (int i = 0; i < n; i++)
         {
-            f[i + 1][j] += f[i][j] * p[i + j];
-            f[i][j + 1] += f[i][j] * (1 - p[i + j]);
+            if (s[i] == '0' and i >= (int)(n / 2))
+            {
+                cout << 1 << " " << (i + 1) << " ";
+                cout << 1 << " " << i << endl;
+                flag = true;
+                break;
+            }
+            if (s[i] == '0' and n - (i + 1) >= (int)(n / 2))
+            {
+                cout << (i + 1) << " " << n << " ";
+                cout << (i + 2) << " " << n << endl;
+                flag = true;
+                break;
+            }
         }
+        if (flag)
+            continue;
+        cout << 1 << " " << (n / 2) << " ";
+        cout << ((n + 1) / 2) + 1 << " " << n << endl;
     }
-
-    for (int i = n; i > n - i; i--)
-    {
-        ans += f[i][n - i];
-    }
-
-    // output
-    cout << setprecision(9) << ans << endl;
     return 0;
 }
