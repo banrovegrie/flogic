@@ -38,37 +38,31 @@ signed main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int t;
-    cin >> t;
-    while (t--)
+    int n, k, q;
+    cin >> n >> k >> q;
+
+    vi a(n);
+    for (int &i: a)
+        cin >> i;
+
+    set<int> s;
+    while (q--)
     {
-        int n, q;
-        cin >> n >> q;
-        string s;
-        cin >> s;
-
-        vi pos(n + 1), neg(n + 1);
-        if (s[0] == '+')
-            pos[0] = 1;
-        else
-            neg[0] = 1;
-        for (int i = 1; i < n; i++)
+        int type, id;
+        cin >> type >> id;
+        
+        if (type == 1)
         {
-            if (s[i] == '+') 
-                pos[i] = pos[i - 1] + 1,
-                neg[i] = neg[i - 1];
-            else
-                pos[i] = pos[i - 1],
-                neg[i] = neg[i - 1] + 1;
+            s.insert(a[id - 1]);
+            if (s.size() > k)
+                s.erase(*(s.begin()));
         }
-
-        while (q--)
+        else
         {
-            int l, r;
-            cin >> l >> r;
-            l--, r--;
-
-            if (pos[r] - pos[l] >= neg[r] - neg[l]);
+            if (s.find(a[id - 1]) != s.end())
+                cout << "YES" << endl;
+            else
+                cout << "NO" << endl;
         }
     }
     return 0;
