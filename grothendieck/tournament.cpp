@@ -35,31 +35,72 @@ typedef vector<bool> vb;                // Vector of bool
 
 signed main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    vi arr((int)3e5 + 7, 0);
-    for (int i = 1; i <= (int)3e5 + 7; i++)
-    {
-        arr[i] = arr[i - 1] ^ i;
-    }
+    /* ios_base::sync_with_stdio(false); */
+    /* cin.tie(NULL); */
     
     int t;
     cin >> t;
     while (t--)
     {
-        // (0 ^ ... ^ a - 1) ^ b = x
-        int a, b;
-        cin >> a >> b;
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
+        
+        vector<vector<char> > g(n + 5, vector<char> (n + 5, '*'));
 
-        int x = b ^ arr[a - 1];
+        int win = 0;
+        vi w, d;
+        for (int i = 0; i < n; i++)
+        {
+            if (s[i] == '2')
+                win++, w.pb(i);
+            else
+                d.pb(i);
+        }
 
-        if (x == 0)
-            cout << a << endl;
-        else if (x == a)
-            cout << a + 2 << endl;
+        if (win == 0)
+            cout << "YES" << endl;
+        else if (win <= 2)
+        {
+            cout << "NO" << endl;
+            continue;
+        }
         else
-            cout << a + 1 << endl;
+            cout << "YES" << endl;
+
+        for (int i = 0; i < n; i++)
+            g[i][i] = 'X';
+        for (int i = 0; i < d.size(); i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                /* cout << d[i] << " " << j << endl; */
+                if (d[i] != j)
+                    g[d[i]][j] = '=',
+                    g[j][d[i]] = '=';
+            }
+        }
+
+        /* cout << w.size() << " edewdwd" << endl; */
+        for (int i = 0; i < ((int)w.size() - 1); i++)
+        {
+            /* cout << w[i] << " " << w[i + 1] << endl; */
+            g[w[i]][w[i + 1]] = '+';
+            g[w[i + 1]][w[i]] = '-';
+        }
+        if (w.size() > 0)
+        {
+            // cout << w[n - 1] << " " << w[0] << endl;
+            g[w[w.size() - 1]][w[0]] = '+',
+            g[w[0]][w[w.size() - 1]] = '-';
+        }
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+                cout << g[i][j];
+            cout << endl;
+        }
     }
     return 0;
 }

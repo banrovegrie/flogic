@@ -37,29 +37,38 @@ signed main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-
-    vi arr((int)3e5 + 7, 0);
-    for (int i = 1; i <= (int)3e5 + 7; i++)
-    {
-        arr[i] = arr[i - 1] ^ i;
-    }
     
     int t;
     cin >> t;
     while (t--)
     {
-        // (0 ^ ... ^ a - 1) ^ b = x
-        int a, b;
-        cin >> a >> b;
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
 
-        int x = b ^ arr[a - 1];
+        bool A = false, B = false;
+        for (int i = 0; i < n; i++)
+        {
+            if (s[i] == 'a')
+                A = true;
+            else
+                B = true;
+        }
 
-        if (x == 0)
-            cout << a << endl;
-        else if (x == a)
-            cout << a + 2 << endl;
+        if (!A or !B)
+            cout << - 1 << " " << -1 << endl;
         else
-            cout << a + 1 << endl;
+        {
+            for (int i = 1; i < n; i++)
+            {
+                if (s[i - 1] != s[i])
+                {
+                    cout << i << " " << i + 1 << endl;
+                    break;
+                }
+            }
+        }
     }
     return 0;
 }
