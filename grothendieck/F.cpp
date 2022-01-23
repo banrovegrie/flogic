@@ -8,7 +8,7 @@ using namespace std;
 #define ll long long
 #define ld long double
 const int INF = 1e18 + 7;
-const int MAX = 1e5 + 7;
+const int MAX = 1e6 + 7;
 const int MOD = 1e9 + 7;
 typedef pair<ll, ll> ii;
 typedef vector<ll> vi;                  // Vector of long long
@@ -33,55 +33,107 @@ typedef vector<bool> vb;                // Vector of bool
 #define ordered_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 //<----------------------------------------------------------------------------------------------------------------------->
 
-signed main()   
+int n, m; 
+string s; 
+vi capacity(MAX), pref(MAX);
+vvi cpref(MAX), rpref(MAX);
+
+queue<int> l;
+priority_queue<int> q[MAX]; 
+unordered_map<int,int> ump[MAX]; 
+
+vector<int> parse(string s) {
+    vector<int> ret;
+    for(int i = 0; i < s.size(); i++) {
+        if(s[i] == ' ') continue;
+        int num = s[i] - '0';
+        while(i + 1 < s.size() and s[i + 1] >= '0' and s[i + 1] <= '9') {
+            num = (num * 10 + (s[i + 1] - '0'));
+            i++;
+        }
+        ret.push_back(num);
+    }
+    return ret;
+}
+
+vector<int> parse2(string s) 
+{
+    int num = 0;
+    vector<int> ret;
+
+    for(int i = 0; i < s.size(); i++) 
+    {
+        if (i == s.length() - 1)
+        { 
+            num = (num * 10 + (s[i] - '0'));
+            ump[i][num] = ret.size(); 
+            
+            ret.push_back(num); 
+            num = 0; 
+        } 
+        else if (s[i] == ' ')
+        { 
+            ump[i][num] = ret.size(); 
+            
+            ret.pb(num); 
+            num = 0; 
+        }
+        else num = (num * 10 + (s[i] - '0'));
+    }
+    return ret;
+}
+
+signed main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    vvi g(1001, vi(1001, 0));
-    for (int i = 0; i < 1001; i++)
-    {
-        for (int j = 0; j < 1001; j++)
-            g[i][j] = __gcd(i, j);
-    }
+    cin >> n >> m; 
     
-    while (true)
+    for (int i = 1; i <= m; i++) 
+        cin >> capacity[i]; 
+    getline(cin, s); 
+
+    for (int i = 1; i <= n; i++)
     {
-        int n;
-        cin >> n;
+        getline(cin, s); 
+        // cout << s << endl;
+        cpref[i] = parse(s);
+        // cout << s << endl;
+    } 
+    
+    for (int i = 1; i <= m; i++)
+    {
+        getline(cin, s); 
+        rpref[i] = parse2(s);
+    } 
+    
+    for (int i = 1; i <= n; i++) 
+        l.push(i); 
 
-        if (n == 0)
-            break;
+    while (!l.empty())
+    { 
+        int s = l.front(); l.pop();
 
-        vi a(n);
-        for (int &i: a)
-            cin >> i;
-        
-        vvi dp(n, vi(n, INF));
-        for (int i = 0; i < n; i++)
+        if (cpref[s].size() != pref[s]) 
         {
-            dp[i][i] = 0;
-            dp[i][(i + 1) % n] = 0;
-        }
 
-        for (int len = 3; len <= n; len++)
-        {
-            for (int i = 0; i < n; i++)
-            {
-                int j = (i + len - 1) % n;
-                for (int k = (i + 1) % n ; k != j; k = (k + 1) % n)
-                    dp[i][j] = min(dp[i][k] + dp[k][j] + g[a[i]][a[j]],
-                            dp[i][j]);
+            int x = cpref[s][pref[s]]; 
+            q[x].push(ump[x][s]); 
+            
+            while (capacity[x] < q[x].size())
+            { 
+                int y = rpref[x][q[x].top()]; 
+                q[x].pop(); 
+                
+                l.push(y); 
+                pref[y]++; 
             }
-        }
-
-        int ans = INF;
-        for (int i = 0; i < n; i++)
-            for (int j = i + 1; j - i < n; j++)
-                ans = min(dp[i][j%n] + dp[j%n][i] + g[a[i]][a[j%n]],
-                        ans);
-
-        cout << ans << endl;
-    }
-    return 0;
+        } 
+    } 
+    
+    for (int i = 1; i <= n; i++) 
+        if (pref[i] < cpref[i].size()) 
+            cout << i << endl; 
+    return 0; 
 }
