@@ -40,22 +40,29 @@ signed main()
     
     int t;
     cin >> t;
-    
-    if (t < 0)
+    while (t--)
     {
-        t = -t;
-        if (t <= 2147483648)
-            cout << "Yes" << endl;
-        else
-            cout << "No" << endl;
-    }   
-    else
-    {
-        if (t <= 2147483648 - 1)
-            cout << "Yes" << endl;
-        else
-            cout << "No" << endl;
-    }
+        int n;
+        cin >> n;
+        vi arr(n);
+        
+        bool flag = true;
+        for (auto &i: arr)
+            cin >> i;
+        
+        for (int i = 1; i < n; i++)
+        {
+            if (arr[i] < arr[i - 1])
+            {
+                flag = false;
+                break;
+            }
+        }
 
+        if (flag)
+            cout << "NO" << endl;
+        else
+            cout << "YES" << endl;
+    }
     return 0;
 }
