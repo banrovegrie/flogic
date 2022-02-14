@@ -32,37 +32,3 @@ typedef vector<bool> vb;                // Vector of bool
 // order_of_key returns number of elements less that parameter. If element exists, that order is its index
 #define ordered_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 //<----------------------------------------------------------------------------------------------------------------------->
-
-signed main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        int n;
-        cin >> n;
-        vi arr(n);
-        
-        bool flag = true;
-        for (auto &i: arr)
-            cin >> i;
-        
-        for (int i = 1; i < n; i++)
-        {
-            if (arr[i] < arr[i - 1])
-            {
-                flag = false;
-                break;
-            }
-        }
-
-        if (flag)
-            cout << "NO" << endl;
-        else
-            cout << "YES" << endl;
-    }
-    return 0;
-}
