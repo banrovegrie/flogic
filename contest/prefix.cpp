@@ -33,61 +33,32 @@ typedef vector<bool> vb;                // Vector of bool
 #define ordered_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 //<----------------------------------------------------------------------------------------------------------------------->
 
-
-void dfs(int node, map<int, vector<int>> &dp, map<int, vector<int>> &adjMap, vector <int> &mp, int parent = -1){
-    
-    vector <int> eles;
-    for(int child: adjMap[node]){
-        if (child == parent)
-            continue;
-        dfs(child, dp, adjMap, mp, node);
-        for(int x: dp[child])
-            eles.pb(x);
-    }
-    eles.pb(mp[node]);
-
-    sort(eles.begin(), eles.end());
-    vector <int> anss;
-    int sz = eles.size();
-    for(int i = 0; i < min((int)20, sz); i++){
-        anss.pb(eles.back());
-        eles.pop_back();
-    }
-    sort(anss.begin(), anss.end());
-    dp[node] = anss;
-}
-
-
 signed main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int n, q;
-    cin >> n >> q;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int k, n;
+        cin >> k >> n;
 
-    vector <int> mp(n + 1, 0);
-    for (int i = 1; i <= n; i++) cin >> mp[i];
+        vi a(n + 1);
+        a[0] = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            cin >> a[i];
+        }
+        sort(all(a));
 
-    map <int, vector <int>> adjmap;
-    for (int i = 0; i < n - 1; i++){
-        int t, v;
-        cin >> t >> v;
-        adjmap[t].pb(v);
-        adjmap[v].pb(t);
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = a[i]; j > a[i - 1]; j--)
+                cout << j << " ";
+        }
+        cout << endl;
     }
-    
-    map <int, vector <int>> dp;
-    dfs(1, dp, adjmap, mp);
-
-    for(int i = 0; i < q; i++){
-        int n, k;
-        cin >> n >> k;
-        // cout << dp[n].size() << " " << k << endl;
-        // return 0;
-        int ele = dp[n].size() - k;
-        cout << dp[n][ele] << endl;
-    }
-
     return 0;
 }

@@ -41,6 +41,29 @@ signed main()
     int t;
     cin >> t;
     while (t--)
-    {}
+    {
+        int n, w;
+        cin >> n >> w;
+
+        vi a(n);
+        for (auto &i: a)
+            cin >> i;
+
+        sort(all(a));
+        reverse(all(a));
+
+        int cnt = 0, val = 0;
+        for (int i: a)
+        {
+            val += i;
+            cnt += 1;
+            if (val >= w)
+            {
+                break;
+            }
+        }
+
+        cout << n - cnt << endl;
+    }
     return 0;
 }

@@ -33,6 +33,18 @@ typedef vector<bool> vb;                // Vector of bool
 #define ordered_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 //<----------------------------------------------------------------------------------------------------------------------->
 
+int kadane(int n, int start, vector<int> &v) {
+    int max_sum = 0, sum = 0;
+    for (int j=start; j<start+n; j++) {
+        int i = v[j];
+        sum += i;
+        max_sum = max(max_sum, sum);
+        sum = max(sum, (int)0);
+    }
+
+    return max_sum;
+}
+
 signed main()
 {
     ios_base::sync_with_stdio(false);
@@ -41,6 +53,23 @@ signed main()
     int t;
     cin >> t;
     while (t--)
-    {}
+    {
+        int n, x;
+        cin >> n >> x;
+        vi a(n);
+        for (int &i: a){
+            cin >> i;
+            i += x;
+        }
+        
+        for(int win_size = 0; win_size <= n; win_size++){
+            int sum = 0, max_sum = 0;
+            for (int i=0; i<n-win_size; i++) {
+                for(int j=i; j<i+win_size; j++) {
+                    int l = kadane(win_size, j, a);
+                }
+            }
+        }
+    }
     return 0;
 }

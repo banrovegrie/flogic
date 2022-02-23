@@ -38,8 +38,41 @@ signed main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int x;
-    cin >> x;
-    cout << sqrt(x) << endl;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+
+        string s;
+        cin >> s;
+
+        vi a(n + 1);
+        for (int i = 0; i <= n; i++)
+            a[i] = s[i] - '0';
+
+        if (a[0] == 0 or a[1] == 0 or a[n] == 0)
+        {
+            cout << "No\n";
+            continue;
+        }
+
+        vi arr(n);
+        for (int i = 0; i < n; i++)
+            arr[i] = i;
+        
+
+        for (int i = 2; i < n; i++)
+        {
+            if (a[i] == 0)
+                swap(arr[i], arr[i - 1]);
+        }
+
+        cout << "Yes\n";
+        for (int i: arr)
+            cout << i << " ";
+        cout << endl;
+    }
     return 0;
 }

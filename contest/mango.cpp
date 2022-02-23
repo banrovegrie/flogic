@@ -33,14 +33,75 @@ typedef vector<bool> vb;                // Vector of bool
 #define ordered_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 //<----------------------------------------------------------------------------------------------------------------------->
 
+vvi g;
+vi a;
+set<int> visited;
+int cnt = 0, n;
+
+void dfs(int u)
+{
+    visited.insert(u);
+    
+    int c = 0;
+    for (int v: g[u])
+    {
+        if (visited.find(v) == visited.end())
+            c++;
+    }
+
+    cnt += a[u] + c - ((n - g[u].size()) - (visited.size() - (g[u].size() - c)));
+
+    for (int v: g[u])
+    {
+        if (visited.find(v) == visited.end())
+            dfs(v);
+    }
+}
+
 signed main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+
+    int q, m, x, y;
+    cin >> n >> m;
     
-    int t;
-    cin >> t;
-    while (t--)
-    {}
+    g.resize(n + 1), a.resize(n + 1);
+
+    for (int i = 1; i <= n; i++)
+        cin >> a[i];
+
+
+    for (int i = 0; i < m; i++)
+    {
+        cin >> x >> y;
+        g[x].pb(y), g[y].pb(x);
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (visited.find(i) == visited.end())
+            dfs(i);
+    }
+
+    cin >> q;
+    while (q--)
+    {
+        char c;
+        cin >> c;
+        if (c == '+')
+        {
+            cin >> x >> y;
+            cnt += 2;
+        }
+        else if (c == '-')
+        {
+            cin >> x >> y;
+            cnt -= 2;
+        }
+        else
+            cout << cnt << endl;
+    }
+
     return 0;
 }

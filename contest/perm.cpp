@@ -33,39 +33,36 @@ typedef vector<bool> vb;                // Vector of bool
 #define ordered_set tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
 //<----------------------------------------------------------------------------------------------------------------------->
 
-int gcd(int a, int b, int& x, int& y) {
-    if (b == 0) {
-        x = 1;
-        y = 0;
-        return a;
-    }
-    int x1, y1;
-    int d = gcd(b, a % b, x1, y1);
-    x = y1;
-    y = x1 - y1 * (a / b);
-    return d;
-}
-
-bool find_any_solution(int a, int b, int c, int &x0, int &y0, int &g) {
-    g = gcd(abs(a), abs(b), x0, y0);
-    if (c % g) {
-        return false;
-    }
-
-    x0 *= c / g;
-    y0 *= c / g;
-    if (a < 0) x0 = -x0;
-    if (b < 0) y0 = -y0;
-    return true;
-}
-
-
 signed main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    // ios_base::sync_with_stdio(false);
+    // cin.tie(NULL);
     
-    int x1, y1, x2, y2;
-    cin >> x1 >> y1 >> x2 >> y2;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n, k;
+        cin >> n >> k;
+        
+        vi arr(n + 5, 0);
+        for (int i = 1; i <= k; i++)
+        {
+            arr[i] = i;
+        }
+
+        for (int i = k + 1; i <= n - 1; i += 2)
+        {
+            arr[i] = i + 1;
+            arr[i + 1] = i;
+        }
+
+        if (arr[n] == 0)
+            arr[n] = n, swap(arr[1], arr[n]);
+
+        for (int i = 1; i <= n; i++)
+            cout << arr[i] << " ";
+        cout << endl;
+    }
     return 0;
 }
