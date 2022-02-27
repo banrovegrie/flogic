@@ -38,9 +38,36 @@ signed main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int t;
-    cin >> t;
-    while (t--)
-    {}
+    int n;
+    cin >> n;
+
+    string s;
+    cin >> s;
+
+    string t = "-";
+    vector<char> ans;
+
+    for (char i: s)
+    {
+        if (i == 'A')
+            t += "BB";
+        else
+            t += i;
+    }
+
+    s = t;
+    // cout << s << endl;
+    for (int i = 1; i < s.size(); i++)
+    {
+        if (s[i] == 'B' and ans.size() > 0 and *(ans.end() - 1) == 'B')
+            ans.pop_back(),
+            ans.push_back('A');
+        else
+            ans.push_back(s[i]);
+    }
+
+    for (char i: ans)
+        cout << i;
+    cout << endl;
     return 0;
 }
