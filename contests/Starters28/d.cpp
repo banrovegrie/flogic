@@ -4,6 +4,7 @@
 using namespace std;
 #define endl "\n"
 #define int long long int 
+#define flush ""
 
 vector<vector<int>> graph;
 vector<vector<int>> depth;
