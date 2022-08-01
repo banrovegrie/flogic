@@ -4,6 +4,7 @@
 #   [filename within code directory][tab character \t][subsection title]
 
 [Intro]
+team.txt	Team
 strategies.txt	Strategies
 flags.txt	Flags
 template.cpp	Template
