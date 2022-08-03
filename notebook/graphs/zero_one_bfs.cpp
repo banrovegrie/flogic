@@ -1,28 +1,22 @@
 // 0-1 BFS - O(V+E)
 
-const int N = 1e5 + 5;
-
-int dist[N];
-vector<pii> adj[N];
-deque<pii> dq;
-
-void zero_one_bfs (int x){
-    cl(dist, 63);
-    dist[x] = 0;
-    dq.push_back({x, 0});
-    while(!dq.empty()){
-        int u = dq.front().st;
-        int ud = dq.front().nd;
-        dq.pop_front();
-        if(dist[u] < ud) continue;
-        for(auto x : adj[u]){
-            int v = x.st;
-            int w = x.nd;
-            if(dist[u] + w < dist[v]){
-                dist[v] = dist[u] + w;
-                if(w) dq.push_back({v, dist[v]});
-                else dq.push_front({v, dist[v]});
-            }
+vector<int> d(n, INF);
+d[s] = 0;
+deque<int> q;
+q.push_front(s);
+while (!q.empty()) {
+    int u = q.front();
+    q.pop_front();
+    for (auto edge : adj[u]) {
+        int v = edge.first; // neighbour
+        int w = edge.second; // weight of the edge u-v
+        if (d[v] > d[u] + w) {
+            d[v] = d[u] + w;
+            
+            if (w == 1)
+                q.push_back(v);
+            else
+                q.push_front(v);
         }
     }
 }

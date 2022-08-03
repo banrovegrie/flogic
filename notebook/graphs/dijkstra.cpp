@@ -8,23 +8,37 @@
 *           par[v]:      parent node of u, used to rebuild the shortest path      *
 **********************************************************************************/
 
-vector<int> adj[N], adjw[N];
-int dist[N];
+#include <bits/stdc++.h>
+const int INF = 1000000000;
+vector<vector<pair<int, int>>> adj;
 
-memset(dist, 63, sizeof(dist));
-priority_queue<pii> pq;
-pq.push(mp(0,0));
+void dijkstra(int s, vector<int> & d, vector<int> & p) {
+    int n = adj.size();
+    d.assign(n, INF);
+    p.assign(n, -1);
 
-while (!pq.empty()) {
-  int u = pq.top().nd;
-  int d = -pq.top().st;
-  pq.pop();
+    d[s] = 0;
+    using ii = pair<int, int>;
+    priority_queue<ii, vector<ii>, greater<ii>> q;
+    q.push({0, s});
+    
+	while (!q.empty()) {
+        int v = q.top().second;
+        int d_v = q.top().first;
+        q.pop();
+        
+        if (d_v != d[v])
+            continue;
 
-  if (d > dist[u]) continue;
-  for (int i = 0; i < adj[u].size(); ++i) {
-    int v = adj[u][i];
-    int w = adjw[u][i];
-    if (dist[u] + w < dist[v])
-      dist[v] = dist[u]+w, pq.push(mp(-dist[v], v));
-  }
+        for (auto edge : adj[v]) {
+            int to = edge.first;
+            int len = edge.second;
+
+            if (d[v] + len < d[to]) {
+                d[to] = d[v] + len;
+                p[to] = v;
+                q.push({d[to], to});
+            }
+        }
+    }
 }

@@ -7,21 +7,25 @@
 *           vis[i]: visited state for node i (0 or 1)                             *
 **********************************************************************************/
 
-const int N = 1e5+10; // Maximum number of nodes
-int dist[N], par[N];
-vector <int> adj[N];
-queue <int> q;
+vector<vector<int>> adj;
+int n; // number of nodes
+int s; // source
 
-void bfs (int s) {
-    memset(dist, 63, sizeof(dist));
-    dist[s] = 0;
-    q.push(s);
+vector<int> d(n, 0), p(n, -1), visited(n, false);
+queue<int> q;
 
-    while (!q.empty()) {
-        int u = q.front(); q.pop();
-        for (auto v : adj[u]) if (dist[v] > dist[u] + 1) {
-            par[v] = u;
-            dist[v] = dist[u] + 1;
+q.push(s);
+visited[s] = true;
+
+while (not q.empty()) {
+    int u = q.front();
+    q.pop();
+
+    for (auto v: adj[u]) {
+        if (not visited[v]) {
+            visited[v] = true;
+            d[v] = d[u] + 1;
+            p[v] = u;
             q.push(v);
         }
     }

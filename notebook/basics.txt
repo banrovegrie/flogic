@@ -12,10 +12,8 @@ data-structures/linkedlist.cpp	Linked List
 data-structures/min_queue.cpp	Minimum Queue
 data-structures/ordered_set.cpp	Ordered Set
 data-structures/seg_tree.cpp	Segment Tree
-data-structures/seg_tree_dynamic_lazy.cpp	Dynamic Segment Tree (Lazy Update)
-data-structures/seg_tree2d.cpp	Segment Tree 2D
 data-structures/trie.cpp	Trie
-data-structures/union_find_rollback.cpp	Union Find (Rollback)
+data-structures/union_find.cpp	Union Find
 
 [Dynamic Programming]
 dynamic-programming/bitmasking.cpp	Bitmasking
@@ -52,9 +50,6 @@ math/sieve.cpp	Sieve of Eratosthenes
 math/extended_euclid.cpp	Extended Euclidean and Chinese Remainder
 math/euler_phi.cpp	Euler Phi
 math/prime_factors.cpp	Prime Factors
-math/miller_rabin.cpp	Miller-Rabin
-math/pollard_rho.cpp	Pollard-Rho
-math/fft.cpp	Fast Fourier Transform
 
 [Miscellaneous]
 misc/bitset.cpp	Bitset

@@ -1,19 +1,42 @@
 // Articulation points and Bridges O(V+E)
-int par[N], art[N], low[N], num[N], ch[N], cnt;
 
-void articulation(int u) {
-  low[u] = num[u] = ++cnt;
-  for (int v : adj[u]) {
-    if (!num[v]) {
-      par[v] = u; ch[u]++;
-      articulation(v);
-      if (low[v] >= num[u]) art[u] = 1;
-      if (low[v] >  num[u]) { /* u-v bridge */ }
-      low[u] = min(low[u], low[v]);
+// low[v] = min(tin[v], 
+//              tin[p] for all back edges 'p' from 'v',
+//              low[to] for all tree edges 'to' from 'v')
+//
+// The current edge (v, to) is a bridge iff low[to] > tin[v]
+
+int n; // number of nodes
+vector<vector<int>> adj; // adjacency list of graph
+vector<bool> visited;
+vector<int> tin, low;
+int timer;
+
+void dfs(int v, int p = -1) {
+  visited[v] = true;
+  tin[v] = low[v] = timer++;
+  
+  for (int to : adj[v]) {
+    if (to == p) 
+      continue;
+    
+    if (visited[to])
+      low[v] = min(low[v], tin[to]); 
+    else {
+      dfs(to, v);
+      low[v] = min(low[v], low[to]);
+      if (low[to] > tin[v])
+        IS_BRIDGE(v, to);
     }
-    else if (v != par[u]) low[u] = min(low[u], num[v]);
   }
 }
+void find_bridges() {
+  timer = 0;
+  visited.assign(n, false);
+  tin.assign(n, -1);
+  low.assign(n, -1);
 
-for (int i = 0; i < n; ++i) if (!num[i])
-  articulation(i), art[i] = ch[i]>1;
+  for (int i = 0; i < n; ++i)
+    if (!visited[i])
+      dfs(i);
+}
