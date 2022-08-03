@@ -45,12 +45,14 @@ data-structures/union_find_partial_persistent.cpp	Union Find (Partial Persistent
 data-structures/union_find_rollback.cpp	Union Find (Rollback)
 
 [Dynamic Programming]
+dynamic-programming/bitmasking.cpp	Bitmasking
 dynamic-programming/convex_hull_trick_emaxx.cpp	Convex Hull Trick (emaxx)
 dynamic-programming/convex_hull_trick.cpp	Convex Hull Trick
 dynamic-programming/divide_and_conquer_optimization.cpp	Divide and Conquer Optimization
+dynamic-programming/knapsack.cpp	Knapsack
 dynamic-programming/knuth_optimization.cpp	Knuth Optimization
-dynamic-programming/lis.cpp	Longest Increasing Subsequence
-dynamic-programming/sos.cpp	Bitmasking
+dynamic-programming/lis.cpp	Longest XYZ Subsequence
+dynamic-programming/sos.cpp	Sum over Subsets
 dynamic-programming/steiner_tree.cpp	Steiner tree
 
 [Graphs]

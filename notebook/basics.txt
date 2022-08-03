@@ -1,0 +1,63 @@
+# Any line followed by a '#' character is ignored
+# Section headings must be in square brackets
+# Subsections within a section should follow the format:
+#   [filename within code directory][tab character \t][subsection title]
+
+[Intro]
+strategies.txt	Strategies
+template.cpp	Template
+
+[Data Structures]
+data-structures/linkedlist.cpp	Linked List
+data-structures/min_queue.cpp	Minimum Queue
+data-structures/ordered_set.cpp	Ordered Set
+data-structures/seg_tree.cpp	Segment Tree
+data-structures/seg_tree_dynamic_lazy.cpp	Dynamic Segment Tree (Lazy Update)
+data-structures/seg_tree2d.cpp	Segment Tree 2D
+data-structures/trie.cpp	Trie
+data-structures/union_find_rollback.cpp	Union Find (Rollback)
+
+[Dynamic Programming]
+dynamic-programming/bitmasking.cpp	Bitmasking
+dynamic-programming/divide_and_conquer_optimization.cpp	Divide and Conquer Optimization
+dynamic-programming/knapsack.cpp	Knapsack
+dynamic-programming/lis.cpp	Longest XYZ Subsequence
+dynamic-programming/sos.cpp	Sum over Subets
+
+[Graphs]
+graphs/dfs.cpp	DFS
+graphs/bfs.cpp	BFS
+graphs/kahn.cpp	Toposort
+graphs/bridges_and_articulations.cpp	Articulation points and bridges
+graphs/bellman_ford.cpp	Shortest Path (Bellman-Ford)
+graphs/dijkstra.cpp	Shortest Path (Dijkstra)
+graphs/floyd_warshall.cpp	Floyd Warshall
+graphs/zero_one_bfs.cpp	Zero One BFS
+graphs/kruskal.cpp	MST (Kruskal)
+graphs/lca.cpp	Lowest Common Ancestor
+graphs/kosaraju.cpp	Strongly Connected Components
+
+[Strings]
+strings/kmp.cpp	Knuth-Morris-Pratt
+strings/kmp_automaton.cpp	Knuth-Morris-Pratt (Automaton)
+strings/rabin_karp.cpp	Rabin-Karp
+strings/string_hashing.cpp	String Hashing
+strings/string_multihashing.cpp	String Multihashing
+strings/manacher.cpp	Manacher
+
+[Mathematics]
+math/basics.cpp	Basics
+math/advanced.cpp	Advanced
+math/sieve.cpp	Sieve of Eratosthenes
+math/extended_euclid.cpp	Extended Euclidean and Chinese Remainder
+math/euler_phi.cpp	Euler Phi
+math/prime_factors.cpp	Prime Factors
+math/miller_rabin.cpp	Miller-Rabin
+math/pollard_rho.cpp	Pollard-Rho
+math/fft.cpp	Fast Fourier Transform
+
+[Miscellaneous]
+misc/bitset.cpp	Bitset
+misc/builtin.cpp	builtin
+misc/maxallsub.cpp	Max of all fixed length subarrays
+misc/merge_sort.cpp	Merge Sort (Inversion Count)

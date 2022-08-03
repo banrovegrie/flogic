@@ -1,6 +1,6 @@
 Approaching any Problem:
 - Abstraction and Modularity (also called top down approach).
-- Questions and Perspective (keep looking and attacking it from different contexts).
+- Questions and Perspective (keep looking and attacking it from diff contexts).
 - What do you know? (every information given counts and so does partial progress).
 
 Approaching DP Problems:
@@ -8,10 +8,3 @@ Approaching DP Problems:
 - Remember you need to encode all the information you have into the DP. This will help you deicde what the states of the DP should be. The answer always needs to be the global optimum, so you need to figure that out too.
 - Make sure you update the DP, only when required You update the DP only when you have a decision to make.
 - While dealing with bitwise operations, try to imagine of them in terms of Venn Diagrams.
-
-On team:
-- Make Amul speedsolve easy problems.
-- Don't trust Aditya and Arjo's heuristics blindly.
-- Feed math to Arjo.
-- Confirm before submitting, we often get a lot of penalties.
-- Fuck Logic.

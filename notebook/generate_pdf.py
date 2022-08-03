@@ -2,11 +2,12 @@
 import subprocess
 code_dir = "./"
 title = "Fuck Logic ICPC Team Notebook"
+file = 'contents.txt'
 
 def get_sections():
     sections = []
     section_name = None
-    with open('contents.txt', 'r') as f:
+    with open(file, 'r') as f:
         for line in f:
             if '#' in line: line = line[:line.find('#')]
             line = line.strip()
