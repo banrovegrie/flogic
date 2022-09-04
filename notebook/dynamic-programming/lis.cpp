@@ -56,6 +56,5 @@ int longestPalindromeSubseq(string s) {
 
 // Longest Palindromic Substring
 //
-// Solve using Manacher's Algorithm
-// O(n^2)
+// Solve using Manacher's Algorithm (O(n))
 //

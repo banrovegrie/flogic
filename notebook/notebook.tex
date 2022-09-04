@@ -11,10 +11,10 @@
 \usepackage{mathtools}
 
 \renewcommand*{\ttdefault}{pcr}
-\renewcommand\cftsecfont{\fontsize{8}{9}\bfseries}
-\renewcommand\cftsecpagefont{\fontsize{8}{9}\mdseries}
-\renewcommand\cftsubsecfont{\fontsize{5}{6}\mdseries}
-\renewcommand\cftsubsecpagefont{\fontsize{5}{6}\mdseries}
+% \renewcommand\cftsecfont{\fontsize{8}{9}\bfseries}
+% \renewcommand\cftsecpagefont{\fontsize{8}{9}\mdseries}
+% \renewcommand\cftsubsecfont{\fontsize{5}{6}\mdseries}
+% \renewcommand\cftsubsecpagefont{\fontsize{5}{6}\mdseries}
 \renewcommand\cftsecafterpnum{\vspace{-1ex}}
 \renewcommand\cftsubsecafterpnum{\vspace{-1ex}}
 
@@ -23,8 +23,8 @@
     breaklines=true,
     xleftmargin=\parindent,
     showstringspaces=false,
-    basicstyle=\fontsize{5.5}{6}\ttfamily,
-    % basicstyle=\ttfamily,
+    % basicstyle=\fontsize{5.5}{6}\ttfamily,
+    basicstyle=\ttfamily,
 }
 \lstdefinestyle{cpp}{
     style=shared,
@@ -72,17 +72,17 @@
 \date{}
 
 \begin{document}
-\begin{landscape}
-\begin{multicols}{2}
+% \begin{landscape}
+% \begin{multicols}{2}
 \maketitle
 \vspace{-13ex}
 \tableofcontents
 \pagestyle{fancy}
 
 \input contents.tex
-% \begin{multicols}{2}
+\begin{multicols}{2}
 \input mathextra.tex
 \end{multicols}
-\end{landscape}
+% \end{landscape}
 
 \end{document}

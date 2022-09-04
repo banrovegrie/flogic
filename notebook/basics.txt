@@ -39,8 +39,6 @@ graphs/kosaraju.cpp	Strongly Connected Components
 strings/kmp.cpp	Knuth-Morris-Pratt
 strings/kmp_automaton.cpp	Knuth-Morris-Pratt (Automaton)
 strings/rabin_karp.cpp	Rabin-Karp
-strings/string_hashing.cpp	String Hashing
-strings/string_multihashing.cpp	String Multihashing
 strings/manacher.cpp	Manacher
 
 [Mathematics]
@@ -54,5 +52,6 @@ math/prime_factors.cpp	Prime Factors
 [Miscellaneous]
 misc/bitset.cpp	Bitset
 misc/builtin.cpp	builtin
+misc/quick_sort.cpp	Quicksort
 misc/maxallsub.cpp	Max of all fixed length subarrays
 misc/merge_sort.cpp	Merge Sort (Inversion Count)
