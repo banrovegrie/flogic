@@ -1,0 +1,15 @@
+PWD /home/alapan/Documents/Projects/notebook12pt/src/content
+INPUT /etc/texmf/web2c/texmf.cnf
+INPUT /usr/share/texmf/web2c/texmf.cnf
+INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
+INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
+INPUT /home/alapan/Documents/Projects/notebook12pt/src/content/kactl.tex
+OUTPUT /home/alapan/Documents/Projects/notebook12pt/src/content/kactl.log
+INPUT /usr/share/texlive/texmf-dist/tex/latex/extsizes/extreport.cls
+INPUT /usr/share/texlive/texmf-dist/tex/latex/extsizes/extreport.cls
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+INPUT /usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/exscale.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/exscale.sty

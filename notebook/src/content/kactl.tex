@@ -1,0 +1,36 @@
+\documentclass[11pt, a4paper, notitlepage]{extreport}
+\usepackage{kactlpkg}
+% \usepackage{DejaVuSansMono}
+
+%%% make keywords bold
+\lstset{keywordstyle=\bfseries} % \color{myblue}
+\lstset{emph={ll, dbl, VI, PII, REP}, emphstyle=\bfseries}
+\lstset{commentstyle=\color{darkgray}\itshape}
+\setcounter{tocdepth}{1}
+\kactlcontentdir{content}
+
+\university{FLogic}{International Institute Of Information Technology - Hyderabad}{iiit}
+\team{FLogic}{Aditya, Amul, Arjo}
+\contest{ICPC Regionals 2021-22}{October 2022}
+
+\begin{document}
+	% \maketeampage
+	% Small KACTL header on the first page:
+	% \maketitle{``One Last Time'' Edition}{\today}
+	\begin{multicols*}{3}
+	\thispagestyle{fancy}
+	% Table of contents, without subsections:
+	\setcounter{tocdepth}{2}
+
+	\kactlchapter{contest}
+	\kactlchapter{data-structures}
+	\kactlchapter{graph}
+	\kactlchapter{strings}
+	\kactlchapter{number-theory}
+	\kactlchapter{combinatorics}
+	\kactlchapter{algebra}
+	\kactlchapter{geometry}
+	\kactlchapter{various}
+	\end{multicols*}
+
+\end{document}
