@@ -1,16 +1,8 @@
-tests = int(input())
-for test in range(tests):
-    flag = True
+t = int(input())
+for _ in range(t):
     x = int(input())
-    val = list(map(int, input().split()))
-    for i in range(len(val)):
-        if val[i] == 0 and x == i + 1:
-            flag  = False
-            break
-        elif val[i] == i + 1:
-            flag = False
-            break 
-    if  flag:
-        print("YES")
-    else:
+    v = list(map(int, input().split()))
+    if v[0] == 1 or v[1] == 2 or v[2] == 3 or v[x - 1] == 0:
         print("NO")
+    else: 
+        print("YES")
