@@ -16,6 +16,13 @@ typedef pair<int, int> pii;
 typedef vector<int> vi;
 
 void solve() {
+    string s, t = "";
+    cin >> s;
+
+    for (int i = 3; i < s.size(); i++) t += s[i];
+
+    if (t == "316" or t >= "350" or t == "000") cout << "No\n";
+    else cout << "Yes\n";
     return;
 }
 

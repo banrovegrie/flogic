@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cmath>
 #include <cassert>
+#include <map>
 #include <cstring>
 using namespace std;
 #define int long long
@@ -16,7 +17,19 @@ typedef pair<int, int> pii;
 typedef vector<int> vi;
 
 void solve() {
-    return;
+    int n, q;
+    cin >> n >> q;
+
+    vi t(q, 0);
+    map<int, int> m;
+    
+    int cnt = 0;
+    for (int &i : t) {
+        cin >> i, m[i]++;
+        if (m[i] % 2 == 1) cnt += 1;
+        else cnt -= 1;
+    }
+    cout << n - cnt << endl;
 }
 
 signed main() {

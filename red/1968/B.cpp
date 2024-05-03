@@ -16,12 +16,31 @@ typedef pair<int, int> pii;
 typedef vector<int> vi;
 
 void solve() {
-    return;
+    int n, m;
+    cin >> n >> m;
+
+    string a, b;
+    cin >> a;
+    cin >> b;
+
+    int  i = 0, j = 0, ans = 0;
+
+    while (j < m and i < n) {
+        if (a[i] == b[j]) i++, j++, ans++;
+        else j++; 
+    }
+
+    cout << ans << endl;
 }
 
 signed main() {
-	cin.tie(0)->sync_with_stdio(0);
-	cin.exceptions(cin.failbit);
-    
-    solve();
+    cin.tie(0)->sync_with_stdio(0);
+    cin.exceptions(cin.failbit);
+
+    int t;
+    cin >> t;
+
+    while (t--) {
+        solve();
+    }
 }
