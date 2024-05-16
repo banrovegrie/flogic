@@ -16,14 +16,10 @@ typedef pair<int, int> pii;
 typedef vector<int> vi;
 
 void solve() {
-    // input
-    int n, q;
-    vi a(n);
-    for (int &i: a)
-        cin >> i;
+    int x, y;
+    cin >> x >> y;
 
-    
-    return;
+    cout << min(x, y) << " " << max(x, y) << endl;
 }
 
 signed main() {

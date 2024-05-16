@@ -16,14 +16,24 @@ typedef pair<int, int> pii;
 typedef vector<int> vi;
 
 void solve() {
-    // input
-    int n, q;
-    vi a(n);
-    for (int &i: a)
-        cin >> i;
+    string s;
+    cin >> s;
 
+    string t = s;
+    sort(all(s));
+    if (t != s) {
+        cout << "YES\n";
+        cout << s << endl;
+        return;
+    }
     
-    return;
+    reverse(all(s));
+    if (t != s) {
+        cout << "YES\n";
+        cout << s << endl;
+        return;
+    }
+    cout << "NO\n";
 }
 
 signed main() {
