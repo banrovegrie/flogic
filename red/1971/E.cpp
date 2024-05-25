@@ -37,9 +37,11 @@ void solve() {
         }
         
         int index = upper_bound(a.begin(), a.end(), d) - a.begin() - 1;
+        // cout << index << " ";
         int diff = d - a[index];
+        // cout << diff << " ";
         // cout << d << " " << index << " " << diff << endl;
-        int time = b[index] + ((b[index + 1] - b[index]) / (a[index + 1] - a[index])) * (d - a[index]);
+        int time = b[index] + ((b[index + 1] - b[index]) * (d - a[index])) / (a[index + 1] - a[index]);
         cout << time << " ";
     }
     cout << endl;
