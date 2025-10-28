@@ -1,17 +1,10 @@
-### Introduction
+The [point of rigor](https://emilyriehl.github.io/files/post-rigorous.pdf) is to guide or build intuition. Even though rigor is merely the instrument of demonstration, just as intuition and curiosity are the instruments of invention, there is no denying that it alone can provide us with certainty.
 
-I have wasted a lot of time wondering how to approach a problem or study a subject. Well, it wasn't all a waste, though! Some things have indeed stayed with me and have changed my way of working.
-
-But nothing has influenced me more than recognizing the temperament that aids in doing profound work: the [capacity to concentrate alone](https://www.fermentmagazine.org/rands/promenade2.html), the [curiosity](https://www.youtube.com/watch?v=lr8sVailoLw) to seek a broader perspective, the [courage](https://www.youtube.com/watch?v=i0UTeQfnzfM&t=126s) to dive into dirty ditches and wrestle, and [fun](https://en.wikipedia.org/wiki/Humour).
-
-Some notes:
-
-- The [point of rigor](https://emilyriehl.github.io/files/post-rigorous.pdf) is to guide or build intuition.
-- Even though rigor is merely the instrument of demonstration, just as intuition and curiosity are the instruments of invention, there is no denying that it alone can provide us with certainty.
-- Thinking computationally
+- Thinking computationally?
     - Computation: Economy of operation and notion of complexity.
     - Data structures: Dynamic and composable definition of the state of any process. This is how we build good programs [abstracting out](https://cizeero.bearblog.dev/) complex processes. But how do you build good definitions? Similar to how you build good categories, understanding your morphism requirements.
 - Working through problems often require implementing your reasoning. The ability to reason well seems to depend on information (nodes), understanding (representation of these nodes) and extrapolation (guided random search, open-ness, active discovery).
+- Look for density and try to play with things from scratch with the right abstractions.
 
 ### Takeaways
 
@@ -61,3 +54,5 @@ Another way to reduce chaos is to abstract out the problem and deal with fundame
 10. [Birds and Frogs](https://www.ams.org/notices/200902/rtx090200212p.pdf) by Freeman Dyson
 11. Some [blog](https://codeforces.com/blog/entry/126875) on codeforces
 12. Thirty years of proof: [an interview](https://www.youtube.com/watch?v=nlUimyJpWtI) with Andrew Wiles
+13. [Capacity to concentrate](https://www.fermentmagazine.org/rands/promenade2.html) by Grothendieck
+14. [Curiosity](https://www.youtube.com/watch?v=lr8sVailoLw) by Feynman
